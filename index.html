@@ -141,18 +141,34 @@
   /* ---- Projects ---- */
   .projects{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:22px;}
   .project-card{
-    background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:26px;
-    display:flex; flex-direction:column; gap:12px; transition:transform .2s, box-shadow .2s, border-color .2s;
+    background:var(--panel); border:1px solid var(--line); border-radius:10px; overflow:hidden;
+    display:flex; flex-direction:column; transition:transform .2s, box-shadow .2s, border-color .2s;
   }
   .project-card:hover{
     transform:translateY(-3px); border-color:rgba(77,163,255,0.42);
     box-shadow:0 18px 34px -22px rgba(0,0,0,0.85), 0 0 0 1px rgba(77,163,255,0.16);
   }
+  .project-card:hover .project-thumb svg{transform:scale(1.04);}
+  .project-thumb{
+    aspect-ratio:16/9; width:100%;
+    background:
+      linear-gradient(180deg, rgba(77,163,255,0.10), rgba(164,114,255,0.08)),
+      repeating-linear-gradient(90deg, rgba(231,237,249,0.05) 0 1px, transparent 1px 40px),
+      repeating-linear-gradient(0deg, rgba(231,237,249,0.05) 0 1px, transparent 1px 40px);
+    border-bottom:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .project-thumb svg{width:100%; height:100%; transition:transform .35s ease;}
+  .project-body{padding:26px; display:flex; flex-direction:column; gap:12px; flex:1;}
   .project-card h3{font-size:18px;}
   .project-card p{font-size:14.5px;}
   .project-links{display:flex; gap:16px; font-family:var(--mono); font-size:12.5px; margin-top:auto;}
   .project-links a{color:var(--accent); border-bottom:1px solid transparent;}
   .project-links a:hover{border-color:var(--accent);}
+  @media (prefers-reduced-motion:reduce){
+    .project-thumb svg{transition:none;}
+  }
 
   /* ---- Education / timeline ---- */
   .timeline{
@@ -276,6 +292,25 @@
   <h2>Things I've Built</h2>
   <div class="projects">
     <div class="project-card">
+      <div class="project-thumb">
+        <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#4DA3FF"/><stop offset="100%" stop-color="#A472FF"/>
+            </linearGradient>
+          </defs>
+          <path d="M0,120 C90,60 230,150 320,90 L320,180 L0,180 Z" fill="url(#g1)" opacity="0.14"/>
+          <path d="M0,120 C90,60 230,150 320,90" fill="none" stroke="url(#g1)" stroke-width="2.5"/>
+          <g fill="#8FE3B0">
+            <circle cx="46" cy="96" r="5"/><circle cx="88" cy="70" r="5"/><circle cx="140" cy="110" r="5"/>
+            <circle cx="176" cy="64" r="5"/><circle cx="228" cy="118" r="5"/><circle cx="268" cy="76" r="5"/>
+          </g>
+          <g fill="#FF7A7A">
+            <circle cx="64" cy="140" r="5"/><circle cx="112" cy="150" r="5"/><circle cx="196" cy="146" r="5"/><circle cx="292" cy="132" r="5"/>
+          </g>
+        </svg>
+      </div>
+      <div class="project-body">
       <h3>⭐ Loan Approval Prediction</h3>
       <p>Binary classification model that predicts whether a bank loan application should be approved, based on applicant income, credit history, and demographic features. Handled missing values, encoded categorical fields, and compared model performance.</p>
       <div class="chip-row">
@@ -287,8 +322,18 @@
         <a href="#">Code →</a>
         <a href="#">Live Demo →</a>
       </div>
+      </div>
     </div>
     <div class="project-card">
+      <div class="project-thumb">
+        <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid meet">
+          <polyline points="10,60 60,80 110,72 160,120 210,100 260,150 310,140" fill="none" stroke="#FF7A7A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <polyline points="10,110 60,90 110,60 160,50 210,40 260,30 310,26" fill="none" stroke="#8FE3B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="10" y1="165" x2="310" y2="165" stroke="#23324D" stroke-width="1.5"/>
+          <line x1="10" y1="15" x2="10" y2="165" stroke="#23324D" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <div class="project-body">
       <h3>Customer Churn Prediction</h3>
       <p>Predicts which telecom customers are likely to cancel their subscription, using usage and billing history. Compared multiple classifiers and analyzed feature importance to explain the key churn drivers.</p>
       <div class="chip-row">
@@ -300,8 +345,24 @@
         <a href="#">Code →</a>
         <a href="#">Live Demo →</a>
       </div>
+      </div>
     </div>
     <div class="project-card">
+      <div class="project-thumb">
+        <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid meet">
+          <g fill="#4DA3FF" opacity="0.75">
+            <circle cx="40" cy="110" r="5"/><circle cx="70" cy="130" r="5"/><circle cx="95" cy="95" r="5"/>
+            <circle cx="130" cy="125" r="5"/><circle cx="160" cy="105" r="5"/><circle cx="195" cy="140" r="5"/>
+            <circle cx="225" cy="115" r="5"/><circle cx="255" cy="100" r="5"/><circle cx="285" cy="130" r="5"/>
+          </g>
+          <circle cx="180" cy="55" r="10" fill="none" stroke="#FF7A7A" stroke-width="2.5"/>
+          <circle cx="180" cy="55" r="3.5" fill="#FF7A7A"/>
+          <circle cx="240" cy="60" r="10" fill="none" stroke="#FF7A7A" stroke-width="2.5"/>
+          <circle cx="240" cy="60" r="3.5" fill="#FF7A7A"/>
+          <text x="180" y="35" text-anchor="middle" fill="#FF7A7A" font-family="JetBrains Mono, monospace" font-size="11">fraud</text>
+        </svg>
+      </div>
+      <div class="project-body">
       <h3>Credit Card Fraud Detection</h3>
       <p>Flags fraudulent transactions in a highly imbalanced dataset. Applied resampling techniques and tuned decision thresholds to balance precision and recall for a real-world fraud scenario.</p>
       <div class="chip-row">
@@ -313,8 +374,16 @@
         <a href="#">Code →</a>
         <a href="#">Live Demo →</a>
       </div>
+      </div>
     </div>
     <div class="project-card">
+      <div class="project-thumb">
+        <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid meet">
+          <polyline points="0,90 40,90 55,90 65,40 78,150 90,90 110,90 125,60 140,120 155,90 320,90"
+            fill="none" stroke="#FF7A7A" stroke-width="2.5" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="project-body">
       <h3>Heart Disease Risk Prediction</h3>
       <p>Predicts a patient's risk of heart disease from clinical measurements (cholesterol, blood pressure, ECG results). Focused on model interpretability so predictions can be explained, not just made.</p>
       <div class="chip-row">
@@ -326,8 +395,23 @@
         <a href="#">Code →</a>
         <a href="#">Live Demo →</a>
       </div>
+      </div>
     </div>
     <div class="project-card">
+      <div class="project-thumb">
+        <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid meet">
+          <g stroke="none">
+            <rect x="30" y="110" width="30" height="50" fill="#4DA3FF"/>
+            <rect x="80" y="80" width="30" height="80" fill="#4DA3FF"/>
+            <rect x="130" y="130" width="30" height="30" fill="#8FE3B0"/>
+            <rect x="180" y="60" width="30" height="100" fill="#FF7A7A"/>
+            <rect x="230" y="95" width="30" height="65" fill="#4DA3FF"/>
+            <rect x="280" y="45" width="30" height="115" fill="#FF7A7A"/>
+          </g>
+          <line x1="10" y1="162" x2="315" y2="162" stroke="#23324D" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <div class="project-body">
       <h3>Employee Attrition Prediction</h3>
       <p>HR analytics model predicting which employees are at risk of leaving a company, based on satisfaction, tenure, and workload data. Built to help teams act before losing key talent.</p>
       <div class="chip-row">
@@ -339,8 +423,26 @@
         <a href="#">Code →</a>
         <a href="#">Live Demo →</a>
       </div>
+      </div>
     </div>
     <div class="project-card">
+      <div class="project-thumb">
+        <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid meet">
+          <g fill="#4DA3FF" opacity="0.85">
+            <circle cx="55" cy="60" r="5"/><circle cx="75" cy="45" r="5"/><circle cx="65" cy="80" r="5"/><circle cx="90" cy="65" r="5"/>
+          </g>
+          <g fill="#8FE3B0" opacity="0.85">
+            <circle cx="180" cy="110" r="5"/><circle cx="200" cy="130" r="5"/><circle cx="215" cy="100" r="5"/><circle cx="195" cy="90" r="5"/><circle cx="230" cy="120" r="5"/>
+          </g>
+          <g fill="#A472FF" opacity="0.85">
+            <circle cx="270" cy="45" r="5"/><circle cx="290" cy="60" r="5"/><circle cx="255" cy="65" r="5"/><circle cx="280" cy="30" r="5"/>
+          </g>
+          <ellipse cx="72" cy="63" rx="34" ry="30" fill="none" stroke="#4DA3FF" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <ellipse cx="205" cy="110" rx="38" ry="30" fill="none" stroke="#8FE3B0" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <ellipse cx="273" cy="50" rx="30" ry="28" fill="none" stroke="#A472FF" stroke-width="1.5" stroke-dasharray="4 3"/>
+        </svg>
+      </div>
+      <div class="project-body">
       <h3>Customer Segmentation</h3>
       <p>Unsupervised clustering of retail customers by purchasing behavior to power targeted marketing. Used dimensionality reduction to visualize and validate the resulting segments.</p>
       <div class="chip-row">
@@ -351,6 +453,7 @@
       <div class="project-links">
         <a href="#">Code →</a>
         <a href="#">Live Demo →</a>
+      </div>
       </div>
     </div>
   </div>
